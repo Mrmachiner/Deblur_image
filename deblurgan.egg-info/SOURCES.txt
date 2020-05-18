@@ -1,5 +1,0 @@
-setup.py
-deblurgan.egg-info/PKG-INFO
-deblurgan.egg-info/SOURCES.txt
-deblurgan.egg-info/dependency_links.txt
-deblurgan.egg-info/top_level.txt
