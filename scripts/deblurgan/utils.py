@@ -31,7 +31,6 @@ def preprocess_image(cv_img):
     return img
 
 def preprocess_image_no_resize(cv_img):
-    #cv_img = cv_img.resize(RESHAPE)
     img = np.array(cv_img)
     img = (img - 127.5) / 127.5
     return img

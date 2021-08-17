@@ -46,8 +46,8 @@ def train_multiple_outputs(n_images, batch_size, log_dir, epoch_num, critic_upda
 
     output_true_batch, output_false_batch = np.ones((batch_size, 1)), -np.ones((batch_size, 1))
 
-    log_path = './logs'
-    tensorboard_callback = TensorBoard(log_path)
+    # log_path = './logs'
+    # tensorboard_callback = TensorBoard(log_path)
 
     for epoch in tqdm.tqdm(range(epoch_num)):
         # permutated_indexes = np.random.permutation(x_train.shape[0]) 

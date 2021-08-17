@@ -3,16 +3,19 @@ from PIL import Image
 import click
 import os
 import cv2
-from deblurgan.model import generator_model
+from deblurgan.model import generator_model_paper
 from deblurgan.utils import deprocess_image, preprocess_image, load_images_score
 from measure.crop_graph import crop_image, graph_image, add_padding
-from measure.score_image import score_blur_image
+# from measure.score_image import score_blur_image
+
 def deblur(weight_path, input_dir, output_dir):
-	g = generator_model()
+	g = generator_model_paper()
 	g.load_weights(weight_path)
 	lst_grap_img = []
 	lst_crop_img = [] 
 	count = 0
+	if not os.path.exists(output_dir):
+		os.mkdir(output_dir)
 	for image_name in os.listdir(input_dir):
 		path_in = input_dir+"/"+image_name  # path image input
 		path_out = output_dir+"/"+image_name # path image output
@@ -43,14 +46,11 @@ def deblur(weight_path, input_dir, output_dir):
 		lst_crop_img.clear()
 
 @click.command()
-@click.option('--weight_path', 
-		default = "/home/minhhoang/Desktop/MinhHoang/ML_DL_inter/deblur-gan-master/Weight/Epoch50/generator_49_298.h5", 
+@click.option('--weight_path', default = "weights/generator.h5", 
 		help='Model weight')
-@click.option('--input_dir', 
-		default = "/home/minhhoang/Desktop/testin", 
+@click.option('--input_dir', default = "/home/minhhoang/Desktop/abcd/", 
 		help='Image to deblur')
-@click.option('--output_dir', 
-		default = "/home/minhhoang/Desktop/out", 
+@click.option('--output_dir', default = "/home/minhhoang/Desktop/abcde/", 
 		help='Deblurred image')
 
 def deblur_command(weight_path, input_dir, output_dir):

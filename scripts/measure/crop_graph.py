@@ -13,6 +13,7 @@ def add_padding(img):  #add padding image h and w % 256
         bot = ((img.shape[0]//256) + 1) * 256 - img.shape[0]
     imgPadding = cv2.copyMakeBorder(img, 0, bot, 0, right, cv2.BORDER_CONSTANT)
     return imgPadding
+    
 def crop_image(imgPadding): # crop img_original to many img 256x256 return lst_img
     global x, y
     vt = 0
