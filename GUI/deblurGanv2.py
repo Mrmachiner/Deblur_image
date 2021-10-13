@@ -60,7 +60,7 @@ class Ui_MainWindow(object):
         super().__init__()
         self.model_me = compareModel()
         self.mode_original = compareModel(key="paper")
-        self.yolo = Yolo("yolov5/yolov5s.pt", 0.25)
+        self.yolo = Yolo("yolov5/yolov5n.pt", 0.25)
         self.display_width = 491
         self.display_height = 271
     def setupUi(self, MainWindow):
@@ -164,12 +164,12 @@ class Ui_MainWindow(object):
         self.process(key="Yolo")
     
     def show_img_source(self):
-        image_s = cv2.imread("image_label/img_s.png")
+        image_s = cv2.imread("/home/minhhoang/Desktop/Deblur_image/image_label/img_s.png")
         image_s = cv2.cvtColor(image_s, cv2.COLOR_BGR2RGB)
         cv2.imshow("Img_Source", image_s)
 
     def show_img_gen(self):
-        image_g = cv2.imread("image_label/img_m.png")
+        image_g = cv2.imread("/home/minhhoang/Desktop/Deblur_image/image_label/img_m.png")
         image_g = cv2.cvtColor(image_g, cv2.COLOR_BGR2RGB)
         cv2.imshow("Img_Gen", image_g)
         #cv2.waitKey()
@@ -177,7 +177,7 @@ class Ui_MainWindow(object):
         # plt.show()
     
     def show_img_paper(self):
-        image_p = cv2.imread("image_label/img_p.png")
+        image_p = cv2.imread("/home/minhhoang/Desktop/Deblur_image/image_label/img_p.png")
         image_p = cv2.cvtColor(image_p, cv2.COLOR_BGR2RGB)
         cv2.imshow("Img_Paper", image_p)
         #cv2.waitKey()
@@ -244,9 +244,9 @@ class Ui_MainWindow(object):
             self.out_me = self.model_me.implement(self.img)
             self.out_paper = self.mode_original.paper(self.img)
             
-            cv2.imwrite("image_label/img_s.png", self.img)
-            cv2.imwrite("image_label/img_p.png", self.out_paper)
-            cv2.imwrite("image_label/img_m.png", self.out_me)
+            cv2.imwrite("/home/minhhoang/Desktop/Deblur_image/image_label/img_s.png", self.img)
+            cv2.imwrite("/home/minhhoang/Desktop/Deblur_image/image_label/img_p.png", self.out_paper)
+            cv2.imwrite("/home/minhhoang/Desktop/Deblur_image/image_label/img_m.png", self.out_me)
             # cv2.imwrite("img_s_l.png",self.img_s_l)
 
             print("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", self.out_paper.shape)

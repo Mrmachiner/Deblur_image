@@ -12,25 +12,23 @@ import torch.backends.cudnn as cudnn
 from deblurgan.model import generator_model, generator_model_paper
 from deblurgan.utils import load_image, deprocess_image, preprocess_image, preprocess_image_no_resize
 from measure.crop_graph import crop_image, graph_image, add_padding
-sys.path.append("yolov5/")
-from models.experimental import attempt_load
-from utils.torch_utils import select_device, load_classifier, time_synchronized
-from models.experimental import attempt_load
-from utils.datasets import LoadStreams, LoadImages
-from utils.general import check_img_size, check_requirements, check_imshow, non_max_suppression, apply_classifier, \
+from yolov5.models.experimental import attempt_load
+from yolov5.utils.general import check_img_size, check_requirements, check_imshow, non_max_suppression, apply_classifier, \
     scale_coords, xyxy2xywh, strip_optimizer, set_logging, increment_path, save_one_box
-from utils.plots import colors, plot_one_box
-from utils.torch_utils import select_device, load_classifier, time_synchronized
-from utils.datasets import letterbox
+from yolov5.utils.plots import colors, Annotator
+from yolov5.utils.torch_utils import select_device, load_classifier, time_sync
+from yolov5.utils.datasets import letterbox
+
 
 class compareModel():
     def __init__(self, key = "me"):
         if key == "me":
             self.model = generator_model()
-            self.model.load_weights("weights/generator_92_253.h5")
+            self.model.load_weights("/home/minhhoang/Desktop/Deblur_image/weights//generator_92_253.h5")
         elif key == "paper":
             self.model = generator_model_paper()
-            self.model.load_weights("weights/generator.h5")
+            self.model.load_weights("/home/minhhoang/Desktop/Deblur_image/weights/generator.h5")
+
     def implement(self, image_original):
         self.image_original = image_original
         img_tif = self.image_original
@@ -73,6 +71,7 @@ class compareModel():
         img_sharp = cv2.resize(img_sharp,(w, h))
         return img_sharp
 
+
 class Yolo():
     def __init__(self, path_weight, conf):
         
@@ -96,15 +95,15 @@ class Yolo():
         img = img.half() if half else img.float()  # uint8 to fp16/32
         img /= 255.0  # 0 - 255 to 0.0 - 1.0
         if img.ndimension() == 3:
-            img = img.unsqueeze(0)
+            img = img[None]
 
         # Inference
-        t1 = time_synchronized()
-        pred = self.model(img, augment=False)[0]
+        t1 = time_sync()
+        pred = self.model(img, augment=False, visualize=False)[0]
 
         # Apply NMS
         pred = non_max_suppression(pred, self.conf, 0.5, classes=None, agnostic=False)
-        t2 = time_synchronized()
+        t2 = time_sync()
 
 
         # Process detections
@@ -122,10 +121,12 @@ class Yolo():
                     s += f"{n} {names[int(c)]}{'s' * (n > 1)}, "  # add to string
 
                 # Write results
+                annotator = Annotator(im0, line_width=3, example=str(names))
                 for *xyxy, conf, cls in reversed(det):# Add bbox to image
                     c = int(cls)  # integer class
                     label = f'{names[c]} {conf:.2f}'
-                    plot_one_box(xyxy, im0, label=label, color=colors(c, True), line_thickness=3)
+                    # plot_one_box(xyxy, im0, label=label, color=colors(c, True), line_thickness=3)
+                    annotator.box_label(xyxy, label, color=colors(c, True))
 
             # Print time (inference + NMS)
             print(f'{s}Done. ({t2 - t1:.3f}s)')

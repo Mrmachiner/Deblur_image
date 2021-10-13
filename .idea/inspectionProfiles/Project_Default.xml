@@ -1,0 +1,67 @@
+<component name="InspectionProjectProfileManager">
+  <profile version="1.0">
+    <option name="myName" value="Project Default" />
+    <inspection_tool class="PyInterpreterInspection" enabled="false" level="WARNING" enabled_by_default="false" />
+    <inspection_tool class="PyPackageRequirementsInspection" enabled="true" level="WARNING" enabled_by_default="true">
+      <option name="ignoredPackages">
+        <value>
+          <list size="39">
+            <item index="0" class="java.lang.String" itemvalue="elasticsearch" />
+            <item index="1" class="java.lang.String" itemvalue="oauth2client" />
+            <item index="2" class="java.lang.String" itemvalue="m-schedule" />
+            <item index="3" class="java.lang.String" itemvalue="paginate" />
+            <item index="4" class="java.lang.String" itemvalue="marshmallow" />
+            <item index="5" class="java.lang.String" itemvalue="google-cloud-storage" />
+            <item index="6" class="java.lang.String" itemvalue="numpy" />
+            <item index="7" class="java.lang.String" itemvalue="redis" />
+            <item index="8" class="java.lang.String" itemvalue="google-resumable-media" />
+            <item index="9" class="java.lang.String" itemvalue="peewee" />
+            <item index="10" class="java.lang.String" itemvalue="python-jose" />
+            <item index="11" class="java.lang.String" itemvalue="m-singleton" />
+            <item index="12" class="java.lang.String" itemvalue="Flask" />
+            <item index="13" class="java.lang.String" itemvalue="google-api-core" />
+            <item index="14" class="java.lang.String" itemvalue="six" />
+            <item index="15" class="java.lang.String" itemvalue="pymongo" />
+            <item index="16" class="java.lang.String" itemvalue="confluent-kafka" />
+            <item index="17" class="java.lang.String" itemvalue="google" />
+            <item index="18" class="java.lang.String" itemvalue="esengine" />
+            <item index="19" class="java.lang.String" itemvalue="kafka-python" />
+            <item index="20" class="java.lang.String" itemvalue="m-cipher" />
+            <item index="21" class="java.lang.String" itemvalue="pandas" />
+            <item index="22" class="java.lang.String" itemvalue="m-caching" />
+            <item index="23" class="java.lang.String" itemvalue="facepy" />
+            <item index="24" class="java.lang.String" itemvalue="mobio-dnc-sdk" />
+            <item index="25" class="java.lang.String" itemvalue="configparser" />
+            <item index="26" class="java.lang.String" itemvalue="logstash_formatter" />
+            <item index="27" class="java.lang.String" itemvalue="pillow" />
+            <item index="28" class="java.lang.String" itemvalue="google-api-python-client" />
+            <item index="29" class="java.lang.String" itemvalue="PyMySQL" />
+            <item index="30" class="java.lang.String" itemvalue="pycryptodome" />
+            <item index="31" class="java.lang.String" itemvalue="google-cloud-core" />
+            <item index="32" class="java.lang.String" itemvalue="google-auth" />
+            <item index="33" class="java.lang.String" itemvalue="openpyxl" />
+            <item index="34" class="java.lang.String" itemvalue="cython" />
+            <item index="35" class="java.lang.String" itemvalue="xlsxwriter" />
+            <item index="36" class="java.lang.String" itemvalue="pyjwt" />
+            <item index="37" class="java.lang.String" itemvalue="uwsgi" />
+            <item index="38" class="java.lang.String" itemvalue="scikit-learn" />
+          </list>
+        </value>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyPep8NamingInspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="ignoredErrors">
+        <list>
+          <option value="N806" />
+        </list>
+      </option>
+    </inspection_tool>
+    <inspection_tool class="PyShadowingBuiltinsInspection" enabled="true" level="WEAK WARNING" enabled_by_default="true">
+      <option name="ignoredNames">
+        <list>
+          <option value="filter" />
+        </list>
+      </option>
+    </inspection_tool>
+  </profile>
+</component>
